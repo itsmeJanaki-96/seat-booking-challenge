@@ -1,9 +1,8 @@
-- Structure: `index.html` is semantic markup, `styles.css` is responsive styling, and `event.json` supplies the event.
+- Structure:
+-  `index.html` is semantic markup, `styles.css` is responsive styling, and `event.json` supplies the event.
 - `js/seats.js` contains pure validation and pricing functions without DOM access; money uses integer cents.
-- `js/app.js` handles fetch/loading/retry, seat UI, roving tabindex, checkout and live status updates.
-- Security: the intentionally malicious event name is inserted with `textContent`, never `innerHTML`.
+- `js/app.js` handles fetch/loading/retry, seat UI, checkout
 - Automated checks: run `npm test` (Node 20+) for the supplied cases, sold seats, totals and edge cases.
 - Keyboard design: Tab enters the map once, arrows move between available seats, Enter/Space toggles selection.
 - Native `<dialog>` supports Escape and focus return; checkout errors are listed and first invalid field is focused.
-- Manual accessibility checks to perform before submission: keyboard-only pass, VoiceOver/NVDA, axe or Lighthouse.
-- With more time: add automated browser/a11y tests, backend persistence, concurrency-safe reservations and confirmation email.
+- With more time: my first priority would be making the booking flow production-ready by integrating a backend API and introducing temporary seat reservations to handle concurrent users.Next, I would strengthen accessibility through screen-reader testing and add end-to-end tests for the complete booking journey.
