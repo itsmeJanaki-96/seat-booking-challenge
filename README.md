@@ -1,4 +1,4 @@
-# Repalogic Group — Seat Booking Challenge
+# Seat Booking Challenge
 
 A dependency-free event seat booking page using HTML, CSS and modern JavaScript.
 
