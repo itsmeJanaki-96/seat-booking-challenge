@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Seat booking | Repalogic challenge</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <header class="masthead">
+      <span class="eyebrow">LIVE EVENT · SEAT RESERVATIONS</span>
+      <h1 id="event-name">Seat booking</h1>
+      <p>Choose your seats and complete your booking in a few steps.</p>
+    </header>
+
+    <div id="loading" class="notice" role="status">Loading event details…</div>
+    <div id="load-error" class="notice error" role="alert" hidden>
+      <p>We couldn't load the event. Check your connection and try again.</p>
+      <button type="button" id="retry">Retry loading</button>
+    </div>
+
+    <div id="app" class="layout" hidden>
+      <section class="panel map-panel" aria-labelledby="map-heading">
+        <div class="section-head"><div><span class="eyebrow">01 / SEAT SELECTION</span><h2 id="map-heading">Pick your seats</h2></div><span class="pill">Up to 6 seats</span></div>
+        <div class="legend" aria-label="Seat legend">
+          <span><i class="swatch" aria-hidden="true">1</i> Available</span>
+          <span><i class="swatch chosen" aria-hidden="true">✓</i> Selected</span>
+          <span><i class="swatch unavailable" aria-hidden="true">×</i> Sold</span>
+        </div>
+        <div class="stage" aria-hidden="true">STAGE</div>
+        <div class="map-scroll" aria-label="Seat map, horizontally scrollable on narrow screens" role="region" tabindex="-1">
+          <div id="seat-grid" class="seat-grid" role="group" aria-label="Seats; use arrow keys to navigate"></div>
+        </div>
+        <p class="help">Use arrow keys to navigate seats, Space or Enter to select, and Tab to leave the map.</p>
+      </section>
+
+      <aside class="panel summary" aria-labelledby="summary-heading">
+        <span class="eyebrow">02 / YOUR RESERVATION</span>
+        <h2 id="summary-heading">Booking summary</h2>
+        <p class="summary-label">Selected seats <strong id="seat-count">0 / 6</strong></p>
+        <p id="selected-seats" class="seat-summary">No seats selected yet</p>
+        <div class="breakdown">
+          <div><span>Subtotal</span><strong id="subtotal">€0.00</strong></div>
+          <div><span>4+ seats discount (10%)</span><strong id="discount">€0.00</strong></div>
+          <div class="total"><span>Total</span><strong id="total">€0.00</strong></div>
+        </div>
+        <div id="selection-errors" class="validation" role="alert" aria-live="assertive" tabindex="-1" hidden></div>
+        <button type="button" class="primary" id="continue">Continue to checkout <span aria-hidden="true">→</span></button>
+        <p class="footnote">No payment required for this demonstration.</p>
+      </aside>
+    </div>
+
+    <dialog id="checkout" aria-labelledby="checkout-title">
+      <form id="checkout-form" novalidate>
+        <span class="eyebrow">03 / CHECKOUT</span>
+        <h2 id="checkout-title">Confirm your booking</h2>
+        <p id="checkout-summary" class="checkout-summary"></p>
+        <div id="checkout-errors" class="validation" role="alert" aria-live="assertive" hidden></div>
+        <div class="field"><label for="full-name">Full name <span aria-hidden="true">*</span></label><input id="full-name" name="name" type="text" autocomplete="name" required aria-describedby="name-error"><p class="field-error" id="name-error"></p></div>
+        <div class="field"><label for="email">Email address <span aria-hidden="true">*</span></label><input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error"><p class="field-error" id="email-error"></p></div>
+        <div class="actions"><button id="cancel" type="button">Cancel</button><button class="primary" type="submit">Book seats</button></div>
+      </form>
+    </dialog>
+    <p id="confirmation" class="confirmation" role="status" aria-live="polite" hidden></p>
+  </main>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
